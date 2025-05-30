@@ -21,6 +21,8 @@ class AuthController extends Controller
             'name' => $request->username,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'email_verified_at' => null,
+            'remember_token' => null,
         ]);
 
         return redirect('/')->with('success', 'Registrasi berhasil. Silakan login.');
@@ -31,7 +33,7 @@ class AuthController extends Controller
         $credentials = $request->only('username', 'password');
 
         if (Auth::attempt(['name' => $credentials['username'], 'password' => $credentials['password']])) {
-            return redirect('/ belum tahu'); 
+            return redirect('https://www.youtube.com/'); 
         }
 
         return back()->withErrors(['login' => 'Username atau password salah.']);
