@@ -73,7 +73,7 @@
 <body>
     <div class="container">
         <div class="left">
-            <img src="public/images/LeaDrive_noBackground.JPG" alt="LeaDrive Logo" style="max-width: 200px; max-height: 200px;">
+            <img src="{{ asset('images/LeaDrive_noBackground.png') }}" alt="LeaDrive Logo" style="max-width: 200px; max-height: 200px;">
             <h1>LeaDrive</h1>
         </div>
         <div class="right">

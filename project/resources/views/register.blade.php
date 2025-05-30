@@ -23,7 +23,7 @@
         }
         .left h1 {
             font-size: 3rem;
-            color: orange;
+            color: white;
         }
         .right {
             flex: 1;
@@ -64,7 +64,9 @@
 <body>
     <div class="container">
         <div class="left">
-            <h1>LD LeaDrive</h1>
+            
+            <img src="{{ asset('images/LeaDrive_noBackground.png')  }}" alt="Logo" style="width: 150px; height: auto;">
+            <h1>LeaDrive</h1>
         </div>
         <div class="right">
             <div class="form-container">
