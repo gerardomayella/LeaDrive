@@ -33,7 +33,7 @@ class AuthController extends Controller
         $credentials = $request->only('username', 'password');
 
         if (Auth::attempt(['name' => $credentials['username'], 'password' => $credentials['password']])) {
-            return redirect('https://www.youtube.com/'); 
+            return redirect('https://www.usd.ac.id/'); 
         }
 
         return back()->withErrors(['login' => 'Username atau password salah.']);
