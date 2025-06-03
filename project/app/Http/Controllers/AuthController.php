@@ -34,8 +34,14 @@ class AuthController extends Controller
 
         if (Auth::attempt(['name' => $credentials['username'], 'password' => $credentials['password']])) {
             return redirect('/dashboard')->with('success', 'Login berhasil.'); 
-        }
+        } 
 
         return back()->withErrors(['login' => 'Username atau password salah.']);
+    }
+
+    public function logout()    
+    {
+        Auth::logout();
+        return redirect('/')->with('success', 'Anda telah logout.');
     }
 }

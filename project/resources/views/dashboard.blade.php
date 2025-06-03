@@ -16,41 +16,7 @@
     <!-- Background body -->
 <body style="background-image: url('{{ asset("images/BG.png") }}');">
 
-
-
-        <!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-dark" style="background: black; border-bottom: 3px solid purple;">
-    <div class="container-fluid">
-        <!-- Logo LeaDrive -->
-    <a class="navbar-brand fw-bold d-flex align-items-center" href="#">
-        <img src="{{ asset('images/LeaDrive_noBackground.png') }}" alt="LeaDrive" style="height: 45px;"> <!-- Menampilkan logo dengan function asset -->
-        <span class="ms-2" tyle="font-weight: bold; color: white;">LeaDrive</span>
-    </a>
-        <!-- Toggle Button -->
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    
-        <!-- Menu -->
-    <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-3"> <!--  ms-3 untuk memberikan margin kiri -->
-        <li class="nav-item">
-            <a class="nav-link active text-orange fw-bold" href="/dashboard" style="text-decoration: underline;">Home</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link text-orange fw-bold" href="/jadwalSaya">Jadwal Saya</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link text-orange fw-bold" href="/profile">My Profile</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link text-orange fw-bold" href="#">Logout</a>
-        </li>
-        </ul>
-    </div>
-    </div>
-</nav>
-    <!-- End Navbar -->
+@include('partials.navbar') <!-- Include navbar partial -->
 
 <div class="container mt-4">
         <div class="mt-4">
