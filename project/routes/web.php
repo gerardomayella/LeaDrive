@@ -14,3 +14,6 @@ Route::get('/register', function () {
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
 
+Route::get('/dashboard', function () { // Ketika user mengakses alamat dashboard maka jalankan fungsi
+    return view('dashboard'); // yang mengembalikan view dashboard
+});
