@@ -20,9 +20,12 @@ Route::post('/login', [AuthController::class, 'login']);
 
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
-Route::get('/dashboard', function () { // Ketika user mengakses alamat dashboard maka jalankan fungsi
-    return view('dashboard'); // yang mengembalikan view dashboard
-});
+Route::get('/dashboard', function () {
+    if (Auth::user()->is_admin) {
+        return redirect()->route('admin.dashboard'); // Arahkan admin ke dashboard admin
+    }
+    return view('dashboard'); // Arahkan user biasa ke dashboard user
+})->name('dashboard');
 
 Route::get('/profile', [UserController::class, 'profile'])->name('profile'); // rute untuk menampilkan profil pengguna
 Route::put('/profile/update', [UserController::class, 'updateProfile'])->name('profile.updateProfile'); // rute untuk memperbarui profil pengguna
