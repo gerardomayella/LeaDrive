@@ -5,25 +5,54 @@ use Illuminate\Http\Request;
 
 class PemesananController extends Controller
 {
-    // Tampilkan form berdasarkan slug
-    public function showBySlug($slug)
+    public function show($slug)
     {
-        return view('pemesanan', ['slug' => $slug]);
+        $dataKursus = [
+            'ditus' => [
+                'nama' => 'Ditus',
+                'telepon' => '08123456789',
+                'email' => 'ditus@gmail.com',
+                'jam' => '08:00 - 15:00 WIB',
+            ],
+            'mas_Irgi' => [
+                'nama' => 'Mas Irgi',
+                'telepon' => '0811223344',
+                'email' => 'irgi@gmail.com',
+                'jam' => '09:00 - 16:00 WIB',
+            ],
+            'gerardo' => [
+                'nama' => 'gerardo',
+                'telepon' => '0811223344',
+                'email' => 'irgi@gmail.com',
+                'jam' => '09:00 - 16:00 WIB',
+            ],
+            'samuel' => [
+                'nama' => 'samuel',
+                'telepon' => '0811223344',
+                'email' => 'irgi@gmail.com',
+                'jam' => '09:00 - 16:00 WIB',
+            ],
+        ];
+
+        if (!array_key_exists($slug, $dataKursus)) {
+            abort(404);
+        }
+
+        return view('pemesanan', [
+            'slug' => $slug,
+            'kursus' => $dataKursus[$slug],
+        ]);
     }
 
-    // Proses simpan data form
     public function store(Request $request)
     {
         $request->validate([
-            'nama' => 'required|string|max:255',
-            'telepon' => 'required|string|max:20',
-            'slug' => 'required|string',
+            'slug' => 'required',
+            'tanggal' => 'required|date',
         ]);
 
-        // Simulasi simpan data - bisa diubah ke database jika perlu
-        // Pemesanan::create([...]);
-
-        return redirect()->back()->with('success', 'Pemesanan untuk ' . $request->slug . ' berhasil dikirim!');
+        // Simpan atau proses data jika perlu
+        return redirect()->back()->with('success', 'Pemesanan berhasil dikirim!');
     }
 }
 
