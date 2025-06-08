@@ -21,14 +21,14 @@
                 </li>
                 <li class="nav-item">
                     <button class="nav-link text-orange fw-bold me-3" onclick="window.location.href='/profile'" style="background: none; border: none; padding: 0; cursor: pointer;">
-                        Profile Ku
+                        My Profile
                     </button>
                 </li>
                 <li class="nav-item">
                     <form method="POST" action="{{ route('logout') }}" style="display: inline;">
                         @csrf
                         <button type="submit" class="nav-link text-orange fw-bold me-3" style="background: none; border: none; padding: 0; cursor: pointer; text-align: left;">
-                            Log Out
+                            Logout
                         </button>
                     </form>
                 </li>
