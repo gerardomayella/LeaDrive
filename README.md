@@ -14,11 +14,12 @@ LeaDrive adalah aplikasi berbasis web yang dirancang untuk membantu pengguna men
 
 ## Progres Pengembangan
 
-Proyek ini sedang dalam tahap pengembangan dan saat ini telah selesai **20%**.
+Proyek ini sedang dalam tahap pengembangan dan saat ini telah selesai **50%**.
 
 ### Status Progres
+
 ```
-[████████░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░] 20%
+[█████████████████░░░░░░░░░░░░░░░░░░░░░] 50%
 ```
 
 Tetap pantau perkembangan proyek ini untuk fitur-fitur baru yang akan datang!
