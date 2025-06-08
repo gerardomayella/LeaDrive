@@ -20,8 +20,8 @@
 
 <div class="container mt-4">
         <div class="mt-4">
-            <h1 style="color: white; font-weight: bold;">Lead the way, Drive the</h1>
-            <h2 style="color: white; font-weight:bold;">Change...</h2>
+            <h1 style= "color: white; font-weight:bold;">Lead the way, Drive the</h1>
+            <h2 style= "color: white; font-weight:bold;">Change...</h2>
         </div>
 </div>
 
