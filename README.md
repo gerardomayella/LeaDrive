@@ -11,15 +11,16 @@ LeaDrive adalah aplikasi berbasis web yang dirancang untuk membantu pengguna men
 - **Pencarian Kursus:** Cari kursus mengemudi berdasarkan lokasi.
 - **Perbandingan Harga:** Bandingkan harga kursus untuk menemukan yang paling sesuai.
 - **Pendaftaran Online:** Ajukan pendaftaran langsung melalui aplikasi.
+- **Manajemen Role:** Akses dashboard berdasarkan role pengguna.
 
 ## Progres Pengembangan
 
-Proyek ini sedang dalam tahap pengembangan dan saat ini telah selesai **50%**.
+Proyek ini sedang dalam tahap pengembangan dan saat ini telah selesai **60%**.
 
 ### Status Progres
 
 ```
-[█████████████████░░░░░░░░░░░░░░░░░░░░░] 50%
+[█████████████████████░░░░░░░░░░░░░░░░░] 60%
 ```
 
 Tetap pantau perkembangan proyek ini untuk fitur-fitur baru yang akan datang!

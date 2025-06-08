@@ -12,7 +12,6 @@ class IsAdmin
         if (Auth::check() && Auth::user()->role === 'admin') {
             return $next($request);
         }
-
-        return redirect('/'); // Redirect jika bukan admin
+        abort(403, 'Access denied');
     }
 }

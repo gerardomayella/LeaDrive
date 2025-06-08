@@ -3,8 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Controllers\UserController; // menambahkan UserController untuk mengelola profil pengguna
-use App\Http\Controllers\AdminController; // menambahkan AdminController untuk mengelola dashboard admin
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\AdminController;
 
 
 Route::get('/', function () {
@@ -21,10 +21,13 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::get('/dashboard', function () {
-    if (Auth::user()->is_admin) {
+    $user = Auth::user();
+    if ($user->role === 'admin') {
         return redirect()->route('admin.dashboard'); // Arahkan admin ke dashboard admin
+    } elseif ($user->role === 'user') {
+        return view('dashboard'); // Arahkan user biasa ke dashboard user
     }
-    return view('dashboard'); // Arahkan user biasa ke dashboard user
+    abort(403, 'Access denied'); // Tidak diizinkan masuk ke manapun
 })->name('dashboard');
 
 Route::get('/profile', [UserController::class, 'profile'])->name('profile'); // rute untuk menampilkan profil pengguna
