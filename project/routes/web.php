@@ -30,6 +30,8 @@ Route::get('/dashboard', function () {
     abort(403, 'Access denied'); // Tidak diizinkan masuk ke manapun
 })->name('dashboard');
 
+Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard'); // definisikan rute untuk dashboard admin
+
 Route::get('/profile', [UserController::class, 'profile'])->name('profile'); // rute untuk menampilkan profil pengguna
 Route::put('/profile/update', [UserController::class, 'updateProfile'])->name('profile.updateProfile'); // rute untuk memperbarui profil pengguna
 Route::put('/profile/change-password', [UserController::class, 'ubahPassword'])->name('profile.ubahPassword'); // rute untuk mengubah password pengguna
