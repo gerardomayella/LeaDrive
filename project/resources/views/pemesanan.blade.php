@@ -28,46 +28,29 @@
     </style>
 </head>
 <body class="bg-light">
-    <div class="container">
-    <h2 class="mb-4">Pesan</h2>
+    <div class="container mt-5">
+        <h2>Pemesanan Kursus: <span class="text-primary">{{ $nama }}</span></h2>
 
-    @if(session('success'))
-        <div class="alert alert-success">{{ session('success') }}</div>
-    @endif
+        @if(session('success'))
+            <div class="alert alert-success">{{ session('success') }}</div>
+        @endif
 
-    <form action="{{ route('pemesanan.store') }}" method="POST">
-        @csrf
-        <input type="hidden" name="slug" value="{{ $slug }}">
+        <ul class="list-group mb-3">
+            <li class="list-group-item"><strong>Email:</strong> {{ $email }}</li>
+            <li class="list-group-item"><strong>No HP:</strong> {{ $no_hp }}</li>
+            <li class="list-group-item"><strong>Jam:</strong> {{ $jam }}</li>
+        </ul>
 
-        <div class="mb-3">
-            <label class="form-label">Nama Intrusktur</label>
-            <input type="text" class="form-control" value="{{ $kursus['nama'] }}" readonly>
-        </div>
-
-        <div class="mb-3">
-            <label class="form-label">Nomor HP</label>
-            <input type="text" class="form-control" value="{{ $kursus['telepon'] }}" readonly>
-        </div>
-
-        <div class="mb-3">
-            <label class="form-label">Email</label>
-            <input type="text" class="form-control" value="{{ $kursus['email'] }}" readonly>
-        </div>
-
-        <div class="mb-3">
-            <label class="form-label">Jam Kursus</label>
-            <input type="text" class="form-control" value="{{ $kursus['jam'] }}" readonly>
-        </div>
-
-        <div class="mb-3">
-            <label for="tanggal" class="form-label">Masukkan Tanggal Kursus</label>
-            <input type="date" name="tanggal" class="form-control" required>
-        </div>
-
-        <div class="text-center">
+        <form action="{{ route('pemesanan.store') }}" method="POST">
+            @csrf
+            <input type="hidden" name="slug" value="{{ $slug }}">
+            <input type="hidden" name="nama" value="{{ $nama }}">
+            <div class="mb-3">
+                <label for="tanggal" class="form-label">Tanggal Kursus</label>
+                <input type="date" name="tanggal" class="form-control" required>
+            </div>
             <button type="submit" class="btn btn-warning">Pesan</button>
-        </div>
-    </form>
-</div>
+        </form>
+    </div>
 </body>
 </html>

@@ -2,57 +2,66 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Instruktur; // Import the Instruktur model
 
 class PemesananController extends Controller
 {
     public function show($slug)
     {
-        $dataKursus = [
-            'ditus' => [
-                'nama' => 'Ditus',
-                'telepon' => '08123456789',
-                'email' => 'ditus@gmail.com',
-                'jam' => '08:00 - 15:00 WIB',
-            ],
-            'mas_Irgi' => [
-                'nama' => 'Mas Irgi',
-                'telepon' => '0811223344',
-                'email' => 'irgi@gmail.com',
-                'jam' => '09:00 - 16:00 WIB',
-            ],
-            'gerardo' => [
-                'nama' => 'gerardo',
-                'telepon' => '0811223344',
-                'email' => 'irgi@gmail.com',
-                'jam' => '09:00 - 16:00 WIB',
-            ],
-            'samuel' => [
-                'nama' => 'samuel',
-                'telepon' => '0811223344',
-                'email' => 'irgi@gmail.com',
-                'jam' => '09:00 - 16:00 WIB',
-            ],
-        ];
+    // Manual mapping dari nama instruktur (slug) ke ID di database
+    $mapping = [
+        'gerardo' => [
+            'id' => 1,
+            'nama' => 'Gerardo',
+            'jam' => '09:00 - 16:00 WIB',
+        ],
+        'ditus' => [
+            'id' => 2,
+            'nama' => 'Ditus',
+            'jam' => '08:00 - 15:00 WIB',
+        ],
+        'mas_Irgi' => [
+            'id' => 3,
+            'nama' => 'Mas Irgi',
+            'jam' => '10:00 - 17:00 WIB',
+        ],
+        'samuel' => [
+            'id' => 4,
+            'nama' => 'Samuel',
+            'jam' => '11:00 - 16:00 WIB',
+        ]
+    ];
 
-        if (!array_key_exists($slug, $dataKursus)) {
-            abort(404);
-        }
+    // Cek apakah slug valid
+    if (!array_key_exists($slug, $mapping)) {
+        abort(404);
+    }
 
-        return view('pemesanan', [
-            'slug' => $slug,
-            'kursus' => $dataKursus[$slug],
-        ]);
+    // Ambil ID
+    $id = $mapping[$slug]['id'];
+    
+    // Ambil data email dan no_hp dari database berdasarkan ID
+    $instruktur = \App\Models\Instruktur::find($id);
+
+    if (!$instruktur) {
+        abort(404, "Instruktur tidak ditemukan di database");
+    }
+
+    return view('pemesanan', [
+        'slug' => $slug,
+        'nama' => $mapping[$slug]['nama'],
+        'jam' => $mapping[$slug]['jam'],
+        'email' => $instruktur->email,
+        'no_hp' => $instruktur->no_hp,
+    ]);
     }
 
     public function store(Request $request)
     {
-        $request->validate([
-            'slug' => 'required',
-            'tanggal' => 'required|date',
-        ]);
-
-        // Simpan atau proses data jika perlu
-        return redirect()->back()->with('success', 'Pemesanan berhasil dikirim!');
+    $tanggal = $request->input('tanggal');
+    $slug = $request->input('slug');
+    
+    return back()->with('success', "Pemesanan kursus '$slug' untuk tanggal $tanggal berhasil!");
     }
 }
 

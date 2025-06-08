@@ -37,4 +37,4 @@ Route::put('/profile/update', [UserController::class, 'updateProfile'])->name('p
 Route::put('/profile/change-password', [UserController::class, 'ubahPassword'])->name('profile.ubahPassword'); // rute untuk mengubah password pengguna
 
 Route::get('/pemesanan/{slug}', [PemesananController::class, 'show'])->name('pemesanan.show');
-Route::post('/pemesanan', [PemesananController::class, 'store'])->name('pemesanan.store');
+Route::post('/pemesanan', [PemesananController::class, 'store'])->name('pemesanan.store'); // Ensure this points to the store method
