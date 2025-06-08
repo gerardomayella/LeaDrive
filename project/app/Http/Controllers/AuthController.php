@@ -23,6 +23,7 @@ class AuthController extends Controller
             'password' => Hash::make($request->password),
             'email_verified_at' => null,
             'remember_token' => null,
+            'role' => 'user',
         ]);
 
         return redirect('/')->with('success', 'Registrasi berhasil. Silakan login.');
