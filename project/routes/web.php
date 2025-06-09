@@ -17,4 +17,5 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+// Use Laravel Breeze's authentication routes
 require __DIR__.'/auth.php';
