@@ -58,14 +58,19 @@
         .form-container button:hover {
             background-color: #333;
         }
-        .form-container a {
-            display: block;
-            text-align: center;
+        .flex-container {
+            display: flex;
+            justify-content: space-between;
             margin-top: 10px;
-            color: blue;
+            width: 100%;
+        }
+        .flex-container a {
+            color: #0066cc;
+            font-size: 14px;
+            padding: 5px;
             text-decoration: none;
         }
-        .form-container a:hover {
+        .flex-container a:hover {
             text-decoration: underline;
         }
     </style>
@@ -79,13 +84,32 @@
         <div class="right">
             <div class="form-container">
                 <h2>LOGIN</h2>
-                <form action="/login" method="POST">
+                <!-- Session Status -->
+                <x-auth-session-status class="mb-4" :status="session('status')" />
+
+                <form method="POST" action="{{ route('login') }}">
                     @csrf
-                    <input type="text" name="username" placeholder="Username" required>
-                    <input type="password" name="password" placeholder="Password" required>
+                    <input type="email" name="email" placeholder="Email" value="{{ old('email') }}" required autofocus autocomplete="username">
+                    <x-input-error :messages="$errors->get('email')" class="mt-2" />
+
+                    <input type="password" name="password" placeholder="Password" required autocomplete="current-password">
+                    <x-input-error :messages="$errors->get('password')" class="mt-2" />
+
+                    <div style="margin: 10px 0;">
+                        <label for="remember_me" style="color: #666;">
+                            <input id="remember_me" type="checkbox" name="remember">
+                            <span class="ms-2">Remember me</span>
+                        </label>
+                    </div>
+
                     <button type="submit">Login</button>
                 </form>
-                <a href="/register">Belum punya akun? Register Akun</a>
+                <div class="flex-container">
+                    @if (Route::has('password.request'))
+                        <a href="{{ route('password.request') }}">Forgot Password?</a>
+                    @endif
+                    <a href="{{ route('register') }}">Register</a>
+                </div>
             </div>
         </div>
     </div>
