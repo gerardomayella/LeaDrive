@@ -16,8 +16,8 @@
             background-image: url('{{ asset("images/BG.png") }}');
         }
         .card {
-            width: 800px; /* Adjust width */
-            height: 550px; /* Adjust height */
+            width: 600px; /* Adjust width */
+            height: 630px; /* Adjust height */
             margin: 0 auto; /* Center horizontally */
         }
     </style>
@@ -27,7 +27,7 @@
     <div class="container mt-5">
         <div class="card">
             <div class="card-body">
-                <h5 class="card-title">Pesan</h5>
+                <h4 class="card-title">Pesanan</h4>
                 <form action="/submit-pemesanan" method="POST">
                     @csrf
                     <div class="mb-3">
@@ -45,6 +45,10 @@
                     <div class="mb-3">
                         <label for="jam_pengajar" class="form-label">Jam Mengajar</label>
                         <input type="text" id="jam_pengajar" name="jam_pengajar" class="form-control" value="{{ $jam_pengajar }}" readonly>
+                    </div>
+                    <div class="mb-3">
+                        <label for="jam_pengajar" class="form-label">Transmisi</label>
+                        <input type="text" id="jam_pengajar" name="jam_pengajar" class="form-control" value="Mobil {{ $transmisi }}" readonly>
                     </div>
                     <div class="mb-3">
                         <label for="tanggal" class="form-label">Masukkan Tanggal Pemesanan Anda</label>
