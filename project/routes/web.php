@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\PemesananController;
 Route::redirect('/', '/login');
 
 Route::get('/dashboard', function () {
@@ -15,5 +15,6 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::get('/pemesanan/{nama}', [PemesananController::class, 'show'])->name('pemesanan.show');
 // Use Laravel Breeze's authentication routes
 require __DIR__.'/auth.php';
