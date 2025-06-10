@@ -15,6 +15,8 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('/pemesanan/{nama}', [PemesananController::class, 'show'])->name('pemesanan.show');
+// Dynamic route for pemesanan based on name
+Route::get('/pemesanan/{name}', [PemesananController::class, 'show'])->name('pemesanan.show');
+
 // Use Laravel Breeze's authentication routes
 require __DIR__.'/auth.php';

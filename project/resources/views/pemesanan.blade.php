@@ -3,10 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <title>Pemesanan</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-image: url('{{ asset("images/BG.png") }}');
+        }
+        .card {
+            width: 800px; /* Adjust width */
+            height: 550px; /* Adjust height */
+            margin: 0 auto; /* Center horizontally */
+        }
+    </style>
 </head>
 <body>
-    <h1>Halaman Pemesanan</h1>
-    <p>Anda memilih tutor: {{ $nama }}</p>
+    @include('partials.navbarPesan') <!-- Include navbar partial -->
+    <div class="container mt-5">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Pesan</h5>
+                <form action="/submit-pemesanan" method="POST">
+                    @csrf
+                    <div class="mb-3">
+                        <label for="nama" class="form-label">Nama Instruktur</label>
+                        <input type="text" id="nama" name="nama" class="form-control" value="{{ $nama }}" readonly>
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" id="email" name="email" class="form-control" value="{{ $email }}" readonly>
+                    </div>
+                    <div class="mb-3">
+                        <label for="no_hp" class="form-label">Nomor HP</label>
+                        <input type="text" id="no_hp" name="no_hp" class="form-control" value="{{ $no_hp }}" readonly>
+                    </div>
+                    <div class="mb-3">
+                        <label for="jam_pengajar" class="form-label">Jam Mengajar</label>
+                        <input type="text" id="jam_pengajar" name="jam_pengajar" class="form-control" value="{{ $jam_pengajar }}" readonly>
+                    </div>
+                    <div class="mb-3">
+                        <label for="tanggal" class="form-label">Masukkan Tanggal Pemesanan Anda</label>
+                        <input type="date" id="tanggal" name="tanggal" class="form-control" required>
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <a href="/dashboard" class="btn btn-secondary me-4">Kembali</a>
+                        <button type="submit" class="btn btn-warning">Pesan</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
