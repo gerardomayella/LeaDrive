@@ -46,6 +46,14 @@
             border: 1px solid #ccc;
             border-radius: 5px;
         }
+        .form-container input[type="checkbox"] {
+            width: auto;
+            margin: 10px 0;
+        }
+        .form-container label {
+            display: block;
+            margin: 10px 0;
+        }
         .form-container button {
             width: 100%;
             padding: 10px;
@@ -98,7 +106,7 @@
                     <div style="margin: 10px 0;">
                         <label for="remember_me" style="color: #666;">
                             <input id="remember_me" type="checkbox" name="remember">
-                            <span class="ms-2">Remember me</span>
+                            Remember me
                         </label>
                     </div>
 
