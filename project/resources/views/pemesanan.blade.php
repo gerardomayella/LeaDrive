@@ -28,37 +28,37 @@
         <div class="card">
             <div class="card-body">
                 <h4 class="card-title">Pesanan</h4>
-                <form action="/submit-pemesanan" method="POST">
-                    @csrf
-                    <div class="mb-3">
-                        <label for="nama" class="form-label">Nama Instruktur</label>
-                        <input type="text" id="nama" name="nama" class="form-control" value="{{ $nama }}" readonly>
-                    </div>
-                    <div class="mb-3">
-                        <label for="email" class="form-label">Email</label>
-                        <input type="email" id="email" name="email" class="form-control" value="{{ $email }}" readonly>
-                    </div>
-                    <div class="mb-3">
-                        <label for="no_hp" class="form-label">Nomor HP</label>
-                        <input type="text" id="no_hp" name="no_hp" class="form-control" value="{{ $no_hp }}" readonly>
-                    </div>
-                    <div class="mb-3">
-                        <label for="jam_pengajar" class="form-label">Jam Mengajar</label>
-                        <input type="text" id="jam_pengajar" name="jam_pengajar" class="form-control" value="{{ $jam_pengajar }}" readonly>
-                    </div>
-                    <div class="mb-3">
-                        <label for="jam_pengajar" class="form-label">Transmisi</label>
-                        <input type="text" id="jam_pengajar" name="jam_pengajar" class="form-control" value="Mobil {{ $transmisi }}" readonly>
-                    </div>
-                    <div class="mb-3">
-                        <label for="tanggal" class="form-label">Masukkan Tanggal Pemesanan Anda</label>
-                        <input type="date" id="tanggal" name="tanggal" class="form-control" required>
-                    </div>
-                    <div class="d-flex justify-content-center">
-                        <a href="/dashboard" class="btn btn-secondary me-4">Kembali</a>
-                        <button type="submit" class="btn btn-warning">Pesan</button>
-                    </div>
-                </form>
+                <form action="/transaksi" method="POST">
+                @csrf
+                <div class="mb-3">
+                    <label for="nama" class="form-label">Nama Instruktur</label>
+                    <input type="text" id="nama" name="nama" class="form-control" value="{{ $nama }}" readonly>
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" id="email" name="email" class="form-control" value="{{ $email }}" readonly>
+                </div>
+                <div class="mb-3">
+                    <label for="no_hp" class="form-label">Nomor HP</label>
+                    <input type="text" id="no_hp" name="no_hp" class="form-control" value="{{ $no_hp }}" readonly>
+                </div>
+                <div class="mb-3">
+                    <label for="jam_pengajar" class="form-label">Jam Mengajar</label>
+                    <input type="text" id="jam_pengajar" name="jam_pengajar" class="form-control" value="{{ $jam_pengajar }}" readonly>
+                </div>
+                <div class="mb-3">
+                    <label for="transmisi" class="form-label">Transmisi</label>
+                    <input type="text" id="transmisi" name="transmisi" class="form-control" value="Mobil {{ $transmisi }}" readonly>
+                </div>
+                <div class="mb-3">
+                    <label for="tanggal" class="form-label">Masukkan Tanggal Pemesanan Anda</label>
+                    <input type="date" id="tanggal" name="tanggal" class="form-control" required>
+                </div>
+                <div class="d-flex justify-content-center">
+                    <a href="/dashboard" class="btn btn-secondary me-4">Kembali</a>
+                    <button type="submit" class="btn btn-warning">Pesan</button>
+                </div>
+            </form>
             </div>
         </div>
     </div>
