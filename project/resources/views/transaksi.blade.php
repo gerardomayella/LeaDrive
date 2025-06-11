@@ -25,6 +25,8 @@
         .card {
             width: 400px; /* Adjust width */
             height: 200px; /* Adjust height */
+            background-color: black; /* Change background color to black */
+            color: white; /* Ensure text is visible on black background */
         }
     </style>
 </head>

@@ -21,9 +21,21 @@
             margin: 0;
             padding-top: 380px; /* Add some spacing from the top */
         }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px); /* Slight upward movement */
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
         .card {
             width: 400px; /* Adjust width */
             height: 160px; /* Adjust height */
+            animation: fadeIn 0.8s ease-in-out; /* Apply fade-in animation */
         }
     </style>
 </head>

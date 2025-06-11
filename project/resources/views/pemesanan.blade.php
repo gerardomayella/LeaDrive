@@ -19,6 +19,8 @@
             width: 600px; /* Adjust width */
             height: 630px; /* Adjust height */
             margin: 0 auto; /* Center horizontally */
+            background-color: black; /* Change background color to black */
+            color: white; /* Ensure text is visible on black background */
         }
     </style>
 </head>
