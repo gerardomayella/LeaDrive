@@ -21,5 +21,11 @@ Route::middleware('auth')->group(function () {
 Route::get('/pemesanan/{name}', [PemesananController::class, 'show'])->name('pemesanan.show');
 
 Route::post('/transaksi', [TransaksiController::class, 'store'])->name('transaksi.store');
+
+// Route for berhasil page
+Route::get('/berhasil', function () {
+    return view('berhasil');
+});
+
 // Use Laravel Breeze's authentication routes
 require __DIR__.'/auth.php';

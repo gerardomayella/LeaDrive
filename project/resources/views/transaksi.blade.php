@@ -14,17 +14,23 @@
         body {
             font-family: 'Poppins', sans-serif;
             background-image: url('{{ asset("images/BG.png") }}');
+            margin: 0;
+        }
+        .main-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: calc(100vh - 150px); /* Adjust height to exclude navbar */
         }
         .card {
-            width: 600px; /* Adjust width */
-            height: 630px; /* Adjust height */
-            margin: 0 auto; /* Center horizontally */
+            width: 400px; /* Adjust width */
+            height: 200px; /* Adjust height */
         }
     </style>
 </head>
 <body>
     @include('partials.navbarPesan') <!-- Include navbar partial -->
-    <div class="container mt-5">
+    <div class="main-content">
         <div class="card">
             <div class="card-body">
                 <h4 class="card-title">Pesanan</h4>
@@ -36,7 +42,8 @@
                     </select>
                 </div>
                 <div class="d-flex justify-content-center mt-4">
-                    <a href="/dashboard" class="btn btn-warning">Bayar</a>
+                    <a href="{{ url()->previous() }}" class="btn btn-secondary me-4">Cancel</a>
+                    <a href="/berhasil" class="btn btn-warning">Bayar</a>
                 </div>
             </div>
         </div>
