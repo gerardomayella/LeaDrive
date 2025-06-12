@@ -1,8 +1,8 @@
 <?php
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory; // Import the HasFactory trait untuk buat data dummy
+use Illuminate\Database\Eloquent\Model; // Import the Model class
 
 class Instruktur extends Model
 {

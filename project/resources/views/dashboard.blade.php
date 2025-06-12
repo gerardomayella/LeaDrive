@@ -8,7 +8,7 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
-    <title>LeaDrive | Dashboard!</title>
+    <title>LeaDrive | Dashboard</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"> 
     <!-- Link Font Awesome untuk icon bintang -->
     </head>
@@ -45,10 +45,10 @@
     <div class="carousel-inner">
         @foreach($instrukturs as $index => $i) 
         <div class="carousel-item {{ $index == 0 ? 'active' : '' }}">
-            <a href="/pemesanan/{{ Str::slug($i->nama) }}"> 
+            <a href="/pemesanan/{{ $i->nama }}"> 
                 <img src="{{ $i->image_url }}"
-                    style="width: 20%; aspect-ratio: 1 / 1; object-fit: cover; display: block; margin: 0 auto;"
-                    alt="{{ $i->nama }}">
+                style="width: 20%; aspect-ratio: 1 / 1; object-fit: cover; display: block; margin: 0 auto;"
+                alt="{{ $i->nama }}">
             </a>
             <div class="carousel-caption d-none d-md-block">
                 <h5 style="color: {{ $loop->index % 2 == 0 ? 'white' : 'black' }}; font-weight: bold;">
@@ -63,9 +63,9 @@
                     @for ($star = 0; $star < 5; $star++)
                         <i class="fas fa-star" style="color: gold;"></i>
                     @endfor
-                    <span style="color: {{ $loop->index % 2 == 0 ? 'white' : 'orangered' }}; font-weight: bold;">
+                    <span style="color: orange; font-weight: bold;">
                         5.0
-                    </span> <!-- Pewarnaan rating dg cek indeks, jik genap putih, ganjil orange red -->
+                    </span>
                 </div>
             </div>
         </div>

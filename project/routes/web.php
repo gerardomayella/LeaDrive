@@ -32,6 +32,6 @@ Route::get('/berhasil', function () {
 // Use Laravel Breeze's authentication routes
 require __DIR__.'/auth.php';
 
-Route::get('/jadwalUser', function () {
-    return view('jadwalUser');
+Route::get('/jadwalSaya', function () {
+    return view('jadwalSaya');
 });

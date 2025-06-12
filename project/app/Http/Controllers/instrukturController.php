@@ -8,7 +8,7 @@ use App\Models\Instruktur;
 class instrukturController extends Controller
 {
     public function index(){
-        $instrukturs = Instruktur::all();
-        return view('dashboard', compact('instrukturs'));
+        $instrukturs = Instruktur::all(); // Mengambil semua data instruktur dari model Instruktur
+        return view('dashboard', compact('instrukturs')); // Mengirim data instruktur ke view 'dashboard'
     }
 }
