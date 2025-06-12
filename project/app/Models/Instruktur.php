@@ -9,5 +9,5 @@ class Instruktur extends Model
     use HasFactory;
 
     protected $table = 'Instruktur'; // Nama tabel
-    protected $fillable = ['email', 'no_hp', 'nama', 'jam_pengajar']; // Kolom yang dapat diisi
+    protected $fillable = ['email', 'no_hp', 'nama', 'jam_pengajar', 'image_url']; // Kolom yang dapat diisi
 }
