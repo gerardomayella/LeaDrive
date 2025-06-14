@@ -36,3 +36,11 @@ Route::get('/profile', [UserController::class, 'profile'])->name('profile'); // 
 Route::put('/profile/update', [UserController::class, 'updateProfile'])->name('profile.updateProfile'); // rute untuk memperbarui profil pengguna
 Route::put('/profile/change-password', [UserController::class, 'ubahPassword'])->name('profile.ubahPassword'); // rute untuk mengubah password pengguna
 
+use App\Http\Controllers\TutorController;
+
+Route::get('/kelola-tutor', [TutorController::class, 'index'])->name('tutor.index');
+Route::get('/kelola-tutor/create', [TutorController::class, 'create'])->name('tutor.create');
+Route::post('/kelola-tutor', [TutorController::class, 'store'])->name('tutor.store');
+Route::get('/kelola-tutor/{id}/edit', [TutorController::class, 'edit'])->name('tutor.edit');
+Route::put('/kelola-tutor/{id}', [TutorController::class, 'update'])->name('tutor.update');
+Route::delete('/kelola-tutor/{id}', [TutorController::class, 'destroy'])->name('tutor.delete');
