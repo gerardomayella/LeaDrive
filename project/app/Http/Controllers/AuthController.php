@@ -40,9 +40,12 @@ class AuthController extends Controller
         return back()->withErrors(['login' => 'Username atau password salah.']);
     }
 
-    public function logout()    
+    public function logout(Request $request)    
     {
-        Auth::logout();
-        return redirect('/')->with('success', 'Anda telah logout.');
+        Auth::logout(); // Log out the user
+        $request->session()->invalidate(); // Invalidate the session
+        $request->session()->regenerateToken(); // Regenerate the CSRF token
+
+        return redirect('/'); // Redirect to the login page
     }
 }

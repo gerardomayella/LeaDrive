@@ -31,6 +31,7 @@ Route::get('/dashboard', function () {
 })->name('dashboard');
 
 Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard'); // definisikan rute untuk dashboard admin
+Route::get('/admin/jadwal-kursus', [AdminController::class, 'jadwalKursus'])->name('admin.jadwal_kursus');
 
 Route::get('/profile', [UserController::class, 'profile'])->name('profile'); // rute untuk menampilkan profil pengguna
 Route::put('/profile/update', [UserController::class, 'updateProfile'])->name('profile.updateProfile'); // rute untuk memperbarui profil pengguna

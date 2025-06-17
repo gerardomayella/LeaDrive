@@ -15,4 +15,13 @@ class AdminController extends Controller
         // Pass the data to the view
         return view('admin.dashboard', ['instructors' => $instructors]);
     }
+
+    public function jadwalKursus()
+    {
+        // Fetch data from the "Jadwal" table
+        $jadwalKursus = DB::table('Jadwal')->get();
+
+        // Pass the data to the view
+        return view('admin.jadwal_kursus', ['jadwalKursus' => $jadwalKursus]);
+    }
 }

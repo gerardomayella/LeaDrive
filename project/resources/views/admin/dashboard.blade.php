@@ -30,10 +30,13 @@
                     <a class="nav-link" href="#">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Jadwal Kursus</a>
+                    <a class="nav-link" href="{{ route('admin.jadwal_kursus') }}">Jadwal Kursus</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('logout') }}">Logout</a>
+                    <form action="{{ route('logout') }}" method="POST" style="display:inline;">
+                        @csrf
+                        <button type="submit" class="nav-link btn btn-link" style="color: white; text-decoration: none;">Logout</button>
+                    </form>
                 </li>
             </ul>
         </div>
