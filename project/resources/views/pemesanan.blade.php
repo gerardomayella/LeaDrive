@@ -17,10 +17,13 @@
         }
         .card {
             width: 600px; /* Adjust width */
-            height: 630px; /* Adjust height */
+            height: 790px; /* Adjust height */
             margin: 0 auto; /* Center horizontally */
             background-color: black; /* Change background color to black */
             color: white; /* Ensure text is visible on black background */
+        }
+        .form-group {
+            margin-bottom: 15px; /* Tambahkan jarak antar elemen */
         }
     </style>
 </head>
@@ -55,6 +58,17 @@
                 <div class="mb-3">
                     <label for="tanggal" class="form-label">Masukkan Tanggal Pemesanan Anda</label>
                     <input type="date" id="tanggal" name="tanggal" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="lokasi">Masukkan Lokasi</label>
+                    <input type="text" id="lokasi" name="lokasi" class="form-control" placeholder="Jl. Contoh No. 123" required>
+                </div>
+                <div class="form-group">
+                    <label for="metode-pembayaran">Pilih Metode Pembayaran</label>
+                    <select id="metode-pembayaran" name="metode-pembayaran" class="form-control">
+                        <option value="cash">Cash</option>
+                        <option value="transfer">Transfer</option>
+                    </select>
                 </div>
                 <div class="d-flex justify-content-center">
                     <a href="/dashboard" class="btn btn-secondary me-4">Kembali</a>
