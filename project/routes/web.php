@@ -24,6 +24,13 @@ Route::get('/pemesanan/{name}', [PemesananController::class, 'show'])->name('pem
 
 Route::post('/transaksi', [TransaksiController::class, 'store'])->name('transaksi.store');
 
+Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard'); // definisikan rute untuk dashboard admin
+Route::get('/admin/jadwal-kursus', [AdminController::class, 'jadwalKursus'])->name('admin.jadwal_kursus');
+
+Route::get('/profile', [UserController::class, 'profile'])->name('profile'); // rute untuk menampilkan profil pengguna
+Route::put('/profile/update', [UserController::class, 'updateProfile'])->name('profile.updateProfile'); // rute untuk memperbarui profil pengguna
+Route::put('/profile/change-password', [UserController::class, 'ubahPassword'])->name('profile.ubahPassword'); // rute untuk mengubah password pengguna
+
 // Route for berhasil page
 Route::get('/berhasil', function () {
     return view('berhasil');

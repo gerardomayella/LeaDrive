@@ -16,6 +16,7 @@ class AuthController extends Controller
         return redirect('/login');
     }
 
+
     public function logout()
     {
         return redirect('/logout');
