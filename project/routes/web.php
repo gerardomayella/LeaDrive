@@ -1,34 +1,28 @@
 <?php
 
+use App\Http\Controllers\instrukturController;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AuthController;
-use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\PemesananController;
+use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\AdminController;
 
+Route::redirect('/', '/login');
 
-Route::get('/', function () {
-    return view('login');
+Route::get('/dashboard', [instrukturController::class, 'index'])
+->middleware(['auth', 'verified'])
+->name('dashboard'); // Rute untuk menampilkan dashboard yang hanya dapat diakses oleh pengguna yang sudah terautentikasi dan terverifikasi
+
+Route::middleware(['auth'])->group(function () { // Menggunakan middleware auth untuk melindungi rute ini dari akses pengguna yang tidak terautentikasi
+    Route::get('/profile', [UserController::class, 'profile'])->name('profile'); // Rute untuk menampilkan profil pengguna
+    Route::post('/profile/update', [UserController::class, 'updateProfile'])->name('profile.updateProfile'); // Rute untuk memperbarui profil pengguna
+    Route::post('/profile/change-password', [UserController::class, 'ubahPassword'])->name('profile.ubahPassword'); // Rute untuk mengubah password pengguna
 });
 
-Route::get('/register', function () {
-    return view('register');
-});
+// Dynamic route for pemesanan based on name
+Route::get('/pemesanan/{name}', [PemesananController::class, 'show'])->name('pemesanan.show');
 
-Route::post('/register', [AuthController::class, 'register']);
-Route::post('/login', [AuthController::class, 'login']);
-
-Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
-
-Route::get('/dashboard', function () {
-    $user = Auth::user();
-    if ($user->role === 'admin') {
-        return redirect()->route('admin.dashboard'); // Arahkan admin ke dashboard admin
-    } elseif ($user->role === 'user') {
-        return view('dashboard'); // Arahkan user biasa ke dashboard user
-    }
-    abort(403, 'Access denied'); // Tidak diizinkan masuk ke manapun
-})->name('dashboard');
+Route::post('/transaksi', [TransaksiController::class, 'store'])->name('transaksi.store');
 
 Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard'); // definisikan rute untuk dashboard admin
 Route::get('/admin/jadwal-kursus', [AdminController::class, 'jadwalKursus'])->name('admin.jadwal_kursus');
@@ -36,3 +30,15 @@ Route::get('/admin/jadwal-kursus', [AdminController::class, 'jadwalKursus'])->na
 Route::get('/profile', [UserController::class, 'profile'])->name('profile'); // rute untuk menampilkan profil pengguna
 Route::put('/profile/update', [UserController::class, 'updateProfile'])->name('profile.updateProfile'); // rute untuk memperbarui profil pengguna
 Route::put('/profile/change-password', [UserController::class, 'ubahPassword'])->name('profile.ubahPassword'); // rute untuk mengubah password pengguna
+
+// Route for berhasil page
+Route::get('/berhasil', function () {
+    return view('berhasil');
+});
+
+// Use Laravel Breeze's authentication routes
+require __DIR__.'/auth.php';
+
+Route::get('/jadwalSaya', function () {
+    return view('jadwalSaya');
+});
