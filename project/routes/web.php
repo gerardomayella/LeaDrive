@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AdminAuthController;
 
 
 Route::get('/', function () {
@@ -35,4 +36,13 @@ Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin.d
 Route::get('/profile', [UserController::class, 'profile'])->name('profile'); // rute untuk menampilkan profil pengguna
 Route::put('/profile/update', [UserController::class, 'updateProfile'])->name('profile.updateProfile'); // rute untuk memperbarui profil pengguna
 Route::put('/profile/change-password', [UserController::class, 'ubahPassword'])->name('profile.ubahPassword'); // rute untuk mengubah password pengguna
+
+Route::get('/admin/login', [AdminAuthController::class, 'showLoginForm'])->name('admin.login');
+Route::post('/admin/login', [AdminAuthController::class, 'login']);
+Route::post('/admin/logout', [AdminAuthController::class, 'logout'])->name('admin.logout');
+Route::get('/admin/edit-database/{id}', [AdminController::class, 'editDatabase'])->name('admin.editDatabase');
+Route::post('/admin/update-database', [AdminController::class, 'updateDatabase'])->name('admin.updateDatabase');
+Route::get('/admin/add-database', [AdminController::class, 'addDatabase'])->name('admin.addDatabase');
+Route::post('/admin/store-database', [AdminController::class, 'storeDatabase'])->name('admin.storeDatabase');
+Route::delete('/admin/delete-database/{id}', [AdminController::class, 'deleteDatabase'])->name('admin.deleteDatabase');
 
