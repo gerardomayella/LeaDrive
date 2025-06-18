@@ -88,6 +88,20 @@
 @include('partials.navbar') <!-- Include navbar partial -->
 
 <div class="form-container1"> 
+    @if (session('success')) <!--  Menampilkan pesan sukses (dengan session 'alert-success' manfat menggunakan bootstrap 5) l -->
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{ session('success') }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+@endif
+
+@if (session('error'))
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        {{ session('error') }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+@endif
+
     <form action="{{ route('profile.updateProfile') }}" method="POST">
         @csrf  <!-- token otomatis dari Laravel untuk keamanan -->  
         @method('PUT') <!-- method PUT untuk update data -->
@@ -143,4 +157,15 @@
 </div>
 
 </body>
+<!-- Script untuk menghilangkan alert setelah 3 detik -->
+<script>
+    setTimeout(function() { // Fungsi bawaan JavaScript untuk menghilangkan alert
+        let alertNode = document.querySelector('.alert'); // Mencari elemen dengan class 'alert'
+        if(alertNode){ // Mengecek apakah elemen alert ada
+            alertNode.classList.remove('show'); // Menghapus class 'show' untuk menyembunyikan alert
+            alertNode.classList.add('fade'); // Menambahkan class 'fade' untuk efek transisi
+        }
+    }, 3000); // 3 detik
+</script>
+
 </html>

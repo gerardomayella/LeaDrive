@@ -61,6 +61,6 @@ class UserController extends Controller
         $user->password = Hash::make($request->new_password); // Mengenkripsi password baru yang dimasukkan
         $user->save(); // Menyimpan perubahan pada pengguna
 
-        return redirect()->route('profile')->with('success', 'Password berhasil diubah.'); // Mengarahkan kembali ke halaman profil dengan pesan sukses
+        return redirect()->route('profile')->with('success', 'Password berhasil diubah!'); // Mengarahkan kembali ke halaman profil dengan pesan sukses
     }
 }
