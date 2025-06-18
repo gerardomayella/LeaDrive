@@ -79,4 +79,16 @@ class AdminController extends Controller
         DB::table('Instruktur')->where('id_instruktur', $id)->delete();
         return redirect()->route('admin.dashboard')->with('success', 'Data berhasil dihapus.');
     }
+
+    public function jadwalKursus()
+    {
+        $jadwals = DB::table('Jadwal')->get();
+        return view('admin.jadwal-kursus', compact('jadwals'));
+    }
+
+    public function deleteJadwal($id)
+    {
+        DB::table('Jadwal')->where('id', $id)->delete();
+        return redirect()->route('admin.jadwalKursus')->with('success', 'Sesi berhasil diselesaikan.');
+    }
 }

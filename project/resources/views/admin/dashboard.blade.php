@@ -55,8 +55,8 @@
         <div class="container-fluid">
             <span class="navbar-brand mb-0 h1">LeaDrive</span>
             <div>
-                <a href="#">Home</a>
-                <a href="#">Jadwal Kursus</a>
+                <a href="{{ route('admin.dashboard') }}">Home</a>
+                <a href="{{ route('admin.jadwalKursus') }}">Jadwal Kursus</a>
                 <a href="#">Logout</a>
             </div>
         </div>

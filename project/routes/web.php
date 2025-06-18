@@ -45,4 +45,6 @@ Route::post('/admin/update-database', [AdminController::class, 'updateDatabase']
 Route::get('/admin/add-database', [AdminController::class, 'addDatabase'])->name('admin.addDatabase');
 Route::post('/admin/store-database', [AdminController::class, 'storeDatabase'])->name('admin.storeDatabase');
 Route::delete('/admin/delete-database/{id}', [AdminController::class, 'deleteDatabase'])->name('admin.deleteDatabase');
+Route::get('/admin/jadwal-kursus', [AdminController::class, 'jadwalKursus'])->name('admin.jadwalKursus');
+Route::delete('/admin/jadwal-kursus/{id}', [AdminController::class, 'deleteJadwal'])->name('admin.deleteJadwal');
 
