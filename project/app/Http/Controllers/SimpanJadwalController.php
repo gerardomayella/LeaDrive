@@ -1,35 +1,36 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Instruktur;
 use App\Models\Jadwal;
-use App\Models\Instruktur; // Pastikan model Instruktur sudah ada
 
-class JadwalController extends Controller
+class SimpanJadwalController extends Controller
 {
     public function store(Request $request)
     {
-        // Validasi input
-        $validatedData = $request->validate([
-            'tanggal' => 'required|date',
-            'lokasi' => 'required|string|max:255',
-            'instruktur_id' => 'required|exists:instruktur,id', // Validasi ID instruktur
-        ]);
+        // // Validasi input
+        // $validatedData = $request->validate([
+        //     'instruktur_id' => 'required|exists:instrukturs,id', // Pastikan instruktur_id valid
+        //     'tanggal' => 'required|date',
+        //     'lokasi' => 'required|string|max:255',
+        //     'metode_pembayaran' => 'required|string',
+        // ]);
 
-        // Ambil data jam_pengajar dari tabel Instruktur
-        $instruktur = Instruktur::find($validatedData['instruktur_id']);
-        if (!$instruktur) {
-            return redirect()->back()->withErrors(['instruktur_id' => 'Instruktur tidak ditemukan.']);
-        }
+        // // Ambil data instruktur berdasarkan instruktur_id
+        // $instruktur = Instruktur::findOrFail($validatedData['instruktur_id']);
 
-        // Simpan data ke tabel Jadwal
-        Jadwal::create([
-            'tanggal' => $validatedData['tanggal'],
-            'jam' => $instruktur->jam_pengajar, // Ambil jam_pengajar dari tabel Instruktur
-            'lokasi' => $validatedData['lokasi'],
-        ]);
+        // // Simpan data ke tabel Jadwal
+        // Jadwal::create([
+        //     'jam_pengajar' => $instruktur->jam_pengajar, // Ambil jam_pengajar dari tabel Instruktur
+        //     'tanggal' => $validatedData['tanggal'],
+        //     'lokasi' => $validatedData['lokasi'],
+        //     'metode_pembayaran' => $validatedData['metode_pembayaran'],
+        // ]);
 
-        // Redirect ke halaman selesai dengan pesan sukses
-        return redirect()->route('selesai')->with('success', 'Pemesanan berhasil disimpan!');
+        // // Redirect ke halaman berhasil
+        // return redirect()->route('berhasil');
+        dd('Data diterima', $request->all());
     }
 }
