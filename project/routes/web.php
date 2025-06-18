@@ -6,6 +6,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PemesananController;
 use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AdminAuthController;
 
 Route::redirect('/', '/login');
 
@@ -31,7 +34,11 @@ Route::get('/berhasil', function () {
 
 // Use Laravel Breeze's authentication routes
 require __DIR__.'/auth.php';
+require __DIR__.'/admin.php';
 
 Route::get('/jadwalSaya', function () {
     return view('jadwalSaya');
 });
+
+Route::get('/admin/login', [AdminAuthController::class, 'showAdminLogin'])->name('admin.login.view');
+Route::post('/admin/login', [AdminAuthController::class, 'adminLogin'])->name('admin.login');

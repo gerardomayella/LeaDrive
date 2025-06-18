@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - LeaDrive</title>
+    <title>Login Admin - LeaDrive</title>
     <style>
         body {
             margin: 0;
@@ -46,14 +46,6 @@
             border: 1px solid #ccc;
             border-radius: 5px;
         }
-        .form-container input[type="checkbox"] {
-            width: auto;
-            margin: 10px 0;
-        }
-        .form-container label {
-            display: block;
-            margin: 10px 0;
-        }
         .form-container button {
             width: 100%;
             padding: 10px;
@@ -91,34 +83,16 @@
         </div>
         <div class="right">
             <div class="form-container">
-                <h2>LOGIN</h2>
-                <!-- Session Status -->
-                <x-auth-session-status class="mb-4" :status="session('status')" />
-
-                <form method="POST" action="{{ route('login') }}">
+                <h2>LOGIN ADMIN</h2>
+                <form method="POST" action="{{ route('admin.login') }}">
                     @csrf
-                    <input type="email" name="email" placeholder="Email" value="{{ old('email') }}" required autofocus autocomplete="username">
-                    <x-input-error :messages="$errors->get('email')" class="mt-2" />
-
-                    <input type="password" name="password" placeholder="Password" required autocomplete="current-password">
-                    <x-input-error :messages="$errors->get('password')" class="mt-2" />
-
-                    <div style="margin: 10px 0;">
-                        <label for="remember_me" style="color: #666;">
-                            <input id="remember_me" type="checkbox" name="remember">
-                            Remember me
-                        </label>
-                    </div>
-
+                    <input type="email" name="email" placeholder="Email" required>
+                    <input type="password" name="password" placeholder="Password" required>
                     <button type="submit">Login</button>
                 </form>
                 <div class="flex-container">
-                    @if (Route::has('password.request'))
-                        <a href="{{ route('password.request') }}">Forgot Password?</a>
-                    @endif
-                    <a href="{{ route('register') }}">Register</a>
+                    <a href="{{ route('login') }}">Kembali ke login awal</a>
                 </div>
-                <button onclick="window.location.href='{{ route('admin.login.view') }}'">Login sebagai admin</button>
             </div>
         </div>
     </div>
