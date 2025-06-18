@@ -5,6 +5,8 @@ use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\PemesananController;
+use App\Http\Controllers\SimpanJadwalController;
 
 
 Route::get('/', function () {
@@ -36,3 +38,9 @@ Route::get('/profile', [UserController::class, 'profile'])->name('profile'); // 
 Route::put('/profile/update', [UserController::class, 'updateProfile'])->name('profile.updateProfile'); // rute untuk memperbarui profil pengguna
 Route::put('/profile/change-password', [UserController::class, 'ubahPassword'])->name('profile.ubahPassword'); // rute untuk mengubah password pengguna
 
+Route::get('/pemesanan/{name}', [PemesananController::class, 'show'])->name('pemesanan.show');
+Route::post('/pemesanan', [SimpanJadwalController::class, 'store'])->name('pemesanan.store');
+
+Route::get('/berhasil', function () {
+    return view('berhasil');
+})->name('berhasil');
