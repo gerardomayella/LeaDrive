@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\jadwalUser;
 use App\Http\Controllers\PemesananController;
 use App\Http\Controllers\SimpanJadwalController;
 
@@ -44,3 +45,6 @@ Route::post('/pemesanan', [SimpanJadwalController::class, 'store'])->name('pemes
 Route::get('/berhasil', function () {
     return view('berhasil');
 })->name('berhasil');
+
+Route::get('/jadwalUser', [jadwalUser::class, 'index'])->name('jadwalUser.index'); // Rute untuk menampilkan jadwal pengguna
+Route::delete('/jadwalUser/{id_jadwal}', [jadwalUser::class, 'deleteJadwal'])->name('jadwalUser.deleteJadwal'); // Rute untuk menghapus jadwal pengguna berdasarkan ID
