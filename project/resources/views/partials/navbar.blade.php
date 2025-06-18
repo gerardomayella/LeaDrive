@@ -10,26 +10,36 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-3">
                 <li class="nav-item">
-                    <button class="nav-link active text-orange fw-bold me-3" onclick="window.location.href='/dashboard'" style="background: none; border: none; padding: 0; cursor: pointer; text-decoration: underline;">
+                    <a href="/dashboard"
+                        class="nav-link fw-bold me-3 {{ Request::is('dashboard') ? 'active text-orange' : 'text-orange' }}"
+                        style="{{ Request::is('dashboard') ? 'text-decoration: underline;' : '' }}">
                         Home
-                    </button>
+                    </a>
                 </li>
                 <li class="nav-item">
-                    <button class="nav-link text-orange fw-bold me-3" onclick="window.location.href='/jadwalSaya'" style="background: none; border: none; padding: 0; cursor: pointer;">
+                    <a href="/jadwalSaya"
+                        class="nav-link fw-bold me-3 {{ Request::is('jadwalSaya') ? 'active text-orange' : 'text-orange' }}"
+                        style="{{ Request::is('jadwalSaya') ? 'text-decoration: underline;' : '' }}">
                         Jadwal Saya
-                    </button>
+                    </a>
                 </li>
                 <li class="nav-item">
-                    <button class="nav-link text-orange fw-bold me-3" onclick="window.location.href='/profile'" style="background: none; border: none; padding: 0; cursor: pointer;">
+                    <a href="/profile"
+                        class="nav-link fw-bold me-3 {{ Request::is('profile') ? 'active text-orange' : 'text-orange' }}"
+                        style="{{ Request::is('profile') ? 'text-decoration: underline;' : '' }}">
                         My Profile
-                    </button>
+                    </a>
                 </li>
                 <li class="nav-item">
-                    <form method="POST" action="{{ route('logout') }}" style="display: inline;">
+                    <li class="nav-item">
+                    <a href="#" class="nav-link fw-bold me-3 text-orange"
+                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();" 
+                        style="{{ Request::is('logout') ? 'text-decoration: underline;' : '' }}"> 
+                        Logout
+                    </a>
+
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                         @csrf
-                        <button type="submit" class="nav-link text-orange fw-bold me-3" style="background: none; border: none; padding: 0; cursor: pointer; text-align: left;">
-                            Logout
-                        </button>
                     </form>
                 </li>
             </ul>
