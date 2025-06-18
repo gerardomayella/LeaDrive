@@ -13,7 +13,12 @@ class Jadwal extends Model
     // Kolom yang dapat diisi secara massal
     protected $fillable = [
         'tanggal',
-        'jam',
+        'jam_pengajar',
         'lokasi',
     ];
+
+    public $timestamps = false;
+    protected $primaryKey = 'id_jadwal'; // Gunakan id_jadwal sebagai primary key
+    public $incrementing = true; // Primary key menggunakan auto-increment
+    protected $keyType = 'int';
 }
