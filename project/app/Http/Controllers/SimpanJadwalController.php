@@ -18,12 +18,15 @@ class SimpanJadwalController extends Controller
         ]);
 
         $jam_pengajar = Instruktur::where('nama', $request->nama)->value('jam_pengajar');
+        $instruktur = Instruktur::where('nama', $request->nama)->firstOrFail();
 
         // Simpan data ke tabel Jadwal
         Jadwal::create([
-            'jam_pengajar' => $jam_pengajar, // Ambil jam_pengajar dari tabel Instruktur
+            'nama_instruktur' => $instruktur->nama, // Ambil nama instruktur dari tabel Instruktur
+            'jam_pengajar' => $instruktur->jam_pengajar, // Ambil jam_pengajar dari tabel Instruktur
             'tanggal' => $validatedData['tanggal'],
             'lokasi' => $validatedData['lokasi'],
+            'metode_pembayaran' => $validatedData['metode_pembayaran'], // Simpan metode pembayaran
         ]);
 
         // Redirect ke halaman berhasil

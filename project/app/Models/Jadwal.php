@@ -12,9 +12,11 @@ class Jadwal extends Model
 
     // Kolom yang dapat diisi secara massal
     protected $fillable = [
-        'tanggal',
+        'nama_instruktur', // Tambahkan nama instruktur
         'jam_pengajar',
+        'tanggal',
         'lokasi',
+        'metode_pembayaran', 
     ];
 
     public $timestamps = false;
