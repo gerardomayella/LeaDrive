@@ -82,7 +82,11 @@ class AdminController extends Controller
 
     public function jadwalKursus()
     {
-        $jadwals = DB::table('Jadwal')->get();
+        $jadwals = DB::table('Jadwal')
+            ->leftJoin('users', 'Jadwal.user_id', '=', 'users.id') // Join dengan tabel users
+            ->select('Jadwal.id_jadwal as id', 'Jadwal.*', 'users.name as user') // Pastikan kolom id diambil dari id_jadwal
+            ->get();
+
         return view('admin.jadwal-kursus', compact('jadwals'));
     }
 

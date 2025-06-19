@@ -26,6 +26,9 @@ class PemesananController extends Controller
             default => Mobil::whereRaw('LOWER(nama) = ?', [strtolower($name)])->value('transmisi') ?? 'Unknown',
         };
 
+        // Fetch user_id from the authenticated user
+        $user_id = auth()->id();
+
         // Pass the data to the view
         return view('pemesanan', [
             'nama' => $instruktur->nama, // From the 'nama' column
@@ -33,6 +36,8 @@ class PemesananController extends Controller
             'no_hp' => $instruktur->no_hp, // From the 'no_hp' column
             'jam_pengajar' => $instruktur->jam_pengajar, // From the 'jam_pengajar' column
             'transmisi' => $transmisi, // From the 'transmisi' column
+            'harga' => $instruktur->harga, // From the 'harga' column
+            'user_id' => $user_id, // Add user_id from the authenticated user
         ]);
     }
 }

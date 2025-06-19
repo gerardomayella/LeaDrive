@@ -36,7 +36,7 @@
                         <th>User</th>
                         <th>Tutor</th>
                         <th>Tanggal</th>
-                        <th>Lokasi</th>
+                        <th>Harga</th>
                         <th>Jam Pengajar</th>
                         <th>Metode Pembayaran</th>
                         <th>Aksi</th>
@@ -45,10 +45,10 @@
                 <tbody>
                     @foreach ($jadwals as $jadwal)
                     <tr>
-                        <td>{{ $jadwal->user }}</td>
+                        <td>{{ $jadwal->user ?? 'Unknown' }}</td>
                         <td>{{ $jadwal->nama_instruktur }}</td>
                         <td>{{ $jadwal->tanggal }}</td>
-                        <td>{{ $jadwal->lokasi }}</td>
+                        <td>{{ $jadwal->harga }}</td>
                         <td>{{ $jadwal->jam_pengajar }}</td>
                         <td>{{ $jadwal->metode_pembayaran }}</td>
                         <td>

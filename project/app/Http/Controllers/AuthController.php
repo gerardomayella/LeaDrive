@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
 
 class AuthController extends Controller
 {
@@ -34,7 +35,11 @@ class AuthController extends Controller
         $credentials = $request->only('username', 'password');
 
         if (Auth::attempt(['name' => $credentials['username'], 'password' => $credentials['password']])) {
-            return redirect('/dashboard')->with('success', 'Login berhasil.'); 
+            $user = Auth::user();
+            if ($user->role === 'admin') {
+                return redirect()->route('admin.dashboard')->with('success', 'Login berhasil sebagai admin.');
+            }
+            return redirect('/dashboard')->with('success', 'Login berhasil.');
         } 
 
         return back()->withErrors(['login' => 'Username atau password salah.']);
@@ -44,5 +49,33 @@ class AuthController extends Controller
     {
         Auth::logout();
         return redirect('/')->with('success', 'Anda telah logout.');
+    }
+
+    public function showAdminLoginForm()
+    {
+        return view('admin.login');
+    }
+
+    public function adminLogin(Request $request)
+    {
+        $request->validate([
+            'email' => 'required|email',
+            'password' => 'required',
+        ]);
+
+        $admin = DB::table('Instruktur')->where('email', $request->email)->first();
+
+        if ($admin && $request->password === 'admin123') {
+            session(['admin' => $admin]);
+            return redirect()->route('admin.dashboard');
+        }
+
+        return back()->withErrors(['login' => 'Email atau password salah.']);
+    }
+
+    public function adminLogout()
+    {
+        session()->forget('admin');
+        return redirect()->route('admin.login')->with('success', 'Anda telah logout.');
     }
 }
