@@ -77,14 +77,15 @@
             </thead>
             <tbody>
                 @foreach ($jadwal as $j) <!-- Menggunakan variabel $jadwal yang berisi data jadwal dan di iterasi menggunakan foreach -->
-                    <tr>
+                    if ($j == )
+                <tr>
                         <td>{{ \Carbon\Carbon::parse($j->tanggal)->translatedFormat('d F Y') }}</td>  <!-- Library Carbon untuk format tanggal -->
                         <td><strong>{{ $j->jam_pengajar }}</strong></td>
                         <td>{{ $j->nama_instruktur }}</td>
                         <td>{{ $j->metode_pembayaran }}</td>
                         <td>{{ $j->harga }}</td>
                         <td>
-                            <form action="{{ route('JadwalUserController.deleteJadwal', $j->id_jadwal) }}" method="POST" onsubmit="return confirm('Yakin ingin meyudahi sesi ini?')">
+                            <form action="{{ route('jadwalUser.delete', $j->id_jadwal) }}" method="POST" onsubmit="return confirm('Yakin ingin meyudahi sesi ini?')">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn-selesai">Selesai</button>
@@ -98,4 +99,4 @@
 <!-- End Tabel -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     </body>
-</html> 
+</html>
