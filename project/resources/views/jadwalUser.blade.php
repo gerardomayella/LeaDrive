@@ -77,8 +77,8 @@
             </thead>
             <tbody>
                 @foreach ($jadwal as $j) <!-- Menggunakan variabel $jadwal yang berisi data jadwal dan di iterasi menggunakan foreach -->
-                    if ($j == )
-                <tr>
+                    @if ($j->user_id == auth()->id()) <!-- Memastikan hanya menampilkan jadwal yang sesuai dengan user yang sedang login -->
+                    <tr>
                         <td>{{ \Carbon\Carbon::parse($j->tanggal)->translatedFormat('d F Y') }}</td>  <!-- Library Carbon untuk format tanggal -->
                         <td><strong>{{ $j->jam_pengajar }}</strong></td>
                         <td>{{ $j->nama_instruktur }}</td>
@@ -92,6 +92,7 @@
                             </form>
                         </td>                    
                     </tr>
+                    @endif
                 @endforeach
             </tbody>
         </table>
