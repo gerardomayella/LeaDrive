@@ -59,12 +59,17 @@
         .form-container button:hover {
             background-color: #333;
         }
+        .error-message {
+            color: red;
+            font-size: 0.9rem;
+            margin-top: -8px;
+            margin-bottom: 10px;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="left">
-            
             <img src="{{ asset('images/LeaDrive_noBackground.png')  }}" alt="Logo" style="width: 150px; height: auto;">
             <h1>LeaDrive</h1>
         </div>
@@ -75,6 +80,9 @@
                     @csrf
                     <input type="text" name="username" placeholder="Username" required>
                     <input type="email" name="email" placeholder="Email" required>
+                    @error('email')
+                        <div class="error-message">{{ $message }}</div>
+                    @enderror
                     <input type="password" name="password" placeholder="Password" required>
                     <input type="password" name="password_confirmation" placeholder="Konfirmasi Password" required>
                     <button type="submit">Daftar</button>
