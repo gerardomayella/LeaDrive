@@ -1,11 +1,15 @@
 <?php
 
+use App\Http\Controllers\jadwalUser;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
-use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdminAuthController;
+use App\Http\Controllers\PemesananController;
+use App\Http\Controllers\InstrukturController;
+use App\Http\Controllers\SimpanJadwalController;
 
 
 Route::get('/', function () {
@@ -48,3 +52,17 @@ Route::delete('/admin/delete-database/{id}', [AdminController::class, 'deleteDat
 Route::get('/admin/jadwal-kursus', [AdminController::class, 'jadwalKursus'])->name('admin.jadwalKursus');
 Route::delete('/admin/jadwal-kursus/{id}', [AdminController::class, 'deleteJadwal'])->name('admin.deleteJadwal');
 
+
+Route::get('/pemesanan/{name}', [PemesananController::class, 'show'])->name('pemesanan.show');
+Route::post('/pemesanan', [SimpanJadwalController::class, 'store'])->name('pemesanan.store');
+
+Route::get('/berhasil', function () {
+    return view('berhasil');
+})->name('berhasil');
+
+Route::get('/dashboard', [InstrukturController::class, 'index'])
+->middleware(['auth', 'verified'])
+->name('dashboard'); // Rute untuk menampilkan dashboard yang hanya dapat diakses oleh pengguna yang sudah terautentikasi dan terverifikasi
+
+Route::get('/jadwalUser', [jadwalUser::class, 'index'])->name('jadwalUser.index'); // Rute untuk menampilkan jadwal pengguna
+Route::delete('/jadwalUser/{id_jadwal}', [jadwalUser::class, 'deleteJadwal'])->name('jadwalUser.deleteJadwal'); // Rute untuk menghapus jadwal pengguna berdasarkan ID
