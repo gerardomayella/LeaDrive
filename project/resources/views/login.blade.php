@@ -101,6 +101,11 @@
         <div class="right">
             <div class="form-container">
                 <h2>LOGIN</h2>
+                @if ($errors->has('login'))
+                    <div style="color: red; margin-bottom: 10px;">
+                        {{ $errors->first('login') }}
+                    </div>
+                @endif
                 <form action="/login" method="POST">
                     @csrf
                     <input type="text" name="username" placeholder="Username" required>

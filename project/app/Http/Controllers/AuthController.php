@@ -38,18 +38,18 @@ class AuthController extends Controller
         if (Auth::attempt(['name' => $credentials['username'], 'password' => $credentials['password']], $remember)) {
             $user = Auth::user();
             if ($user->role === 'admin') {
-                return redirect()->route('admin.dashboard')->with('success', 'Login berhasil sebagai admin.');
+                return redirect()->route('admin.dashboard')->with('success', 'Login berhasil sebagai admin');
             }
             return redirect('/dashboard')->with('success', 'Login berhasil.');
         } 
 
-        return back()->withErrors(['login' => 'Username atau password salah.']);
+        return back()->withErrors(['login' => 'Username atau password salah, silakan coba lagi']);
     }
 
     public function logout()    
     {
         Auth::logout();
-        return redirect('/')->with('success', 'Anda telah logout.');
+        return redirect('/')->with('success', 'Anda telah logout');
     }
 
     public function showAdminLoginForm()
@@ -71,12 +71,12 @@ class AuthController extends Controller
             return redirect()->route('admin.dashboard');
         }
 
-        return back()->withErrors(['login' => 'Email atau password salah.']);
+        return back()->withErrors(['login' => 'Email atau password salah, silakan coba lagi']);
     }
 
     public function adminLogout()
     {
         session()->forget('admin');
-        return redirect()->route('admin.login')->with('success', 'Anda telah logout.');
+        return redirect()->route('admin.login')->with('success', 'Anda telah logout');
     }
 }
