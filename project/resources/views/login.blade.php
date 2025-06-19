@@ -68,6 +68,28 @@
         .form-container a:hover {
             text-decoration: underline;
         }
+        .remember-me {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            margin: 10px 0 20px;
+            gap: 0.85rem; 
+        }
+
+        .remember-me input[type="checkbox"] {
+            order: 10;
+            margin: 0; 
+            padding: 0;
+        }
+
+        .remember-me label {
+            font-size: 0.85rem;
+            color: #333;
+            order: 1; 
+            white-space: nowrap; 
+            margin: 0;
+            padding: 0;
+        }
     </style>
 </head>
 <body>
@@ -83,6 +105,10 @@
                     @csrf
                     <input type="text" name="username" placeholder="Username" required>
                     <input type="password" name="password" placeholder="Password" required>
+                    <div class="remember-me">
+                         <input type="checkbox" id="remember" name="remember">
+                         <label for="remember">Remember Me</label>
+                    </div>
                     <button type="submit">Login</button>
                 </form>
                 <a href="/register">Belum punya akun? Register Akun</a>
