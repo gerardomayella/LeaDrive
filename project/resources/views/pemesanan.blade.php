@@ -35,50 +35,51 @@
                 <h4 class="card-title">Pesanan</h4>
                 <form action="{{ route('pemesanan.store') }}" method="POST">
                     @csrf
-                    <!-- Input untuk nama -->
+                    <!--  untuk nama -->
                     <div class="mb-3">
                         <label for="nama" class="form-label">Nama Instruktur</label>
                         <input type="text" id="nama" name="nama" class="form-control" value="{{ $nama }}" disabled>
                         <input type="hidden" name="nama" value="{{ $nama }}">
                     </div>
 
-                    <!-- Input untuk email -->
+                    <!--  untuk email -->
                     <div class="mb-3">
                         <label for="email" class="form-label">Email</label>
                         <input type="email" id="email" name="email" class="form-control" value="{{ $email }}" disabled>
                         <input type="hidden" name="email" value="{{ $email }}">
                     </div>
 
-                    <!-- Input untuk no_hp -->
+                    <!--  untuk no_hp -->
                     <div class="mb-3">
                         <label for="no_hp" class="form-label">Nomor HP</label>
                         <input type="text" id="no_hp" name="no_hp" class="form-control" value="{{ $no_hp }}" disabled>
                         <input type="hidden" name="no_hp" value="{{ $no_hp }}">
                     </div>
-                    <!-- Input untuk jam_pengajar -->
+                    <!--  untuk jam_pengajar -->
                     <div class="mb-3">
                         <label for="jam_pengajar" class="form-label">Jam Mengajar</label>
                         <input type="text" id="jam_pengajar" name="jam_pengajar" class="form-control" value="{{ $jam_pengajar }}" disabled>
                         <input type="hidden" name="jam_pengajar" value="{{ $jam_pengajar }}">
                     </div>
 
-                    <!-- Input untuk transmisi -->
+                    <!--  untuk transmisi -->
                     <div class="mb-3">
                         <label for="transmisi" class="form-label">Transmisi</label>
                         <input type="text" id="transmisi" name="transmisi" class="form-control" value="{{ $transmisi }}" disabled>
                         <input type="hidden" name="transmisi" value="{{ $transmisi }}">
                     </div>
 
+                    <!--  untuk transmisi -->
+                    <div class="mb-3">
+                        <label for="harga" class="form-label">Harga</label>
+                        <input type="text" id="harga" name="harga" class="form-control" value="{{ $harga }}" disabled>
+                        <input type="hidden" name="harga" value="{{ $harga }}">
+                    </div>
+
                     <!-- Input untuk tanggal -->
                     <div class="mb-3">
                         <label for="tanggal" class="form-label">Masukkan Tanggal Pemesanan Anda</label>
                         <input type="date" id="tanggal" name="tanggal" class="form-control" required>
-                    </div>
-
-                    <!-- Input untuk lokasi -->
-                    <div class="form-group">
-                        <label for="lokasi">Masukkan Lokasi</label>
-                        <input type="text" id="lokasi" name="lokasi" class="form-control" placeholder="Jl. Contoh No. 123" required>
                     </div>
 
                     <!-- Input untuk metode pembayaran -->

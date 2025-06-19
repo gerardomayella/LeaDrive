@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Instruktur;
 use App\Models\Jadwal;
+use Illuminate\Support\Facades\Log;
 
 class SimpanJadwalController extends Controller
 {
@@ -13,20 +14,22 @@ class SimpanJadwalController extends Controller
         // Validasi input
         $validatedData = $request->validate([
             'tanggal' => 'required|date',
-            'lokasi' => 'required|string|max:255',
             'metode_pembayaran' => 'required|string',
         ]);
 
-        $jam_pengajar = Instruktur::where('nama', $request->nama)->value('jam_pengajar');
         $instruktur = Instruktur::where('nama', $request->nama)->firstOrFail();
+
+        $userId = auth()->id();
+        Log::info('User ID:', ['user_id' => $userId]); // Log user_id untuk debugging
 
         // Simpan data ke tabel Jadwal
         Jadwal::create([
             'nama_instruktur' => $instruktur->nama, // Ambil nama instruktur dari tabel Instruktur
             'jam_pengajar' => $instruktur->jam_pengajar, // Ambil jam_pengajar dari tabel Instruktur
             'tanggal' => $validatedData['tanggal'],
-            'lokasi' => $validatedData['lokasi'],
             'metode_pembayaran' => $validatedData['metode_pembayaran'], // Simpan metode pembayaran
+            'harga' => $instruktur->harga, // Ambil harga dari tabel Instruktur
+            'user_id' => $userId, // Pastikan auth()->id() digunakan
         ]);
 
         // Redirect ke halaman berhasil

@@ -84,7 +84,7 @@
                         <td>{{ $j->nama_instruktur }}</td>
                         <td>{{ $j->metode_pembayaran }}</td>
                         <td>
-                            <form action="{{ route('jadwalUser.deleteJadwal', $j->id_jadwal) }}" method="POST" onsubmit="return confirm('Yakin ingin meyudahi sesi ini?')">
+                            <form action="{{ route('JadwalUserController.deleteJadwal', $j->id_jadwal) }}" method="POST" onsubmit="return confirm('Yakin ingin meyudahi sesi ini?')">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn-selesai">Selesai</button>
