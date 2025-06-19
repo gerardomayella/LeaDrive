@@ -18,19 +18,6 @@
 
 @include('partials.navbar') <!-- Include navbar partial -->
 
-<nav class="navbar">
-    <div class="container-fluid">
-        <span class="navbar-brand mb-0 h1">LeaDrive</span>
-        <div>
-            <a href="{{ route('dashboard') }}">Home</a>
-            <form action="{{ route('logout') }}" method="POST" style="display: inline;">
-                @csrf
-                <button type="submit" class="btn btn-link" style="color: orange; text-decoration: none;">Logout</button>
-            </form>
-        </div>
-    </div>
-</nav>
-
 <div class="container mt-4">
         <div class="mt-4">
             <h1 style= "color: white; font-weight:bold;">Lead the way, Drive the</h1>

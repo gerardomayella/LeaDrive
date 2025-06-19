@@ -18,8 +18,8 @@
                 </li>
                 <li class="nav-item">
                     <a href="/jadwalUser"
-                        class="nav-link fw-bold me-3 {{ Request::is('jadwalUser') ? 'active text-orange' : 'text-orange' }}"
-                        style="{{ Request::is('jadwalUser') ? 'text-decoration: underline;' : '' }}">
+                        class="nav-link fw-bold me-3 {{ Request::is('JadwalUserController') ? 'active text-orange' : 'text-orange' }}"
+                        style="{{ Request::is('JadwalUserController') ? 'text-decoration: underline;' : '' }}">
                         Jadwal Saya
                     </a>
                 </li>
