@@ -57,7 +57,10 @@
             <div>
                 <a href="{{ route('admin.dashboard') }}">Home</a>
                 <a href="{{ route('admin.jadwalKursus') }}">Jadwal Kursus</a>
-                <a href="#">Logout</a>
+                <form action="{{ route('logout') }}" method="POST" style="display: inline;">
+                    @csrf
+                    <button type="submit" class="btn btn-link" style="color: orange; text-decoration: none;">Logout</button>
+                </form>
             </div>
         </div>
     </nav>
