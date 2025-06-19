@@ -33,8 +33,9 @@ class AuthController extends Controller
     public function login(Request $request)
     {
         $credentials = $request->only('username', 'password');
+        $remember = $request->has('remember');
 
-        if (Auth::attempt(['name' => $credentials['username'], 'password' => $credentials['password']])) {
+        if (Auth::attempt(['name' => $credentials['username'], 'password' => $credentials['password']], $remember)) {
             $user = Auth::user();
             if ($user->role === 'admin') {
                 return redirect()->route('admin.dashboard')->with('success', 'Login berhasil sebagai admin.');
