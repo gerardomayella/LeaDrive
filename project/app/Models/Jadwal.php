@@ -11,7 +11,7 @@ class Jadwal extends Model
     protected $table = 'Jadwal'; // Nama tabel di database
 
     // Kolom yang dapat diisi secara massal
-    protected $fillable = [
+    protected $fillable = [ // Daftar kolom yang dapat diisi
         'nama_instruktur', // Tambahkan nama instruktur
         'jam_pengajar',
         'tanggal',

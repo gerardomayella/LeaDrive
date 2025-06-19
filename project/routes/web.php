@@ -8,6 +8,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\PemesananController;
 use App\Http\Controllers\InstrukturController;
+use App\Http\Controllers\JadwalUserController;
 use App\Http\Controllers\SimpanJadwalController;
 
 
@@ -65,5 +66,5 @@ Route::get('/dashboard', [InstrukturController::class, 'index'])
 ->middleware(['auth', 'verified'])
 ->name('dashboard'); // Rute untuk menampilkan dashboard yang hanya dapat diakses oleh pengguna yang sudah terautentikasi dan terverifikasi
 
-Route::get('/JadwalUserController', [jadwalUser::class, 'index'])->name('JadwalUserController.index'); // Rute untuk menampilkan jadwal pengguna
-Route::delete('/JadwalUserController/{id_jadwal}', [jadwalUser::class, 'deleteJadwal'])->name('JadwalUserController.deleteJadwal'); // Rute untuk menghapus jadwal pengguna berdasarkan ID
+Route::get('/jadwalUser', [JadwalUserController::class, 'index'])->name('jadwalUser.index'); // Rute untuk menampilkan jadwal pengguna
+Route::delete('/jadwalUser/{id_jadwal}', [JadwalUserController::class, 'deleteJadwal'])->name('jadwalUser.delete'); // Rute untuk menghapus jadwal pengguna berdasarkan ID

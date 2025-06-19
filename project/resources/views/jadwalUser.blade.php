@@ -68,21 +68,21 @@
             <thead>
                 <tr>
                     <th>Tanggal</th>
-                    <th>Lokasi</th>
                     <th>Jam</th>
                     <th>Instruktur</th>
                     <th>Metode Pembayaran</th>
+                    <th>Harga</th>
                     <th>Aksi</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($jadwal as $j)
+                @foreach ($jadwal as $j) <!-- Menggunakan variabel $jadwal yang berisi data jadwal dan di iterasi menggunakan foreach -->
                     <tr>
                         <td>{{ \Carbon\Carbon::parse($j->tanggal)->translatedFormat('d F Y') }}</td>  <!-- Library Carbon untuk format tanggal -->
-                        <td>{{ $j->lokasi }}</td>
                         <td><strong>{{ $j->jam_pengajar }}</strong></td>
                         <td>{{ $j->nama_instruktur }}</td>
                         <td>{{ $j->metode_pembayaran }}</td>
+                        <td>{{ $j->harga }}</td>
                         <td>
                             <form action="{{ route('JadwalUserController.deleteJadwal', $j->id_jadwal) }}" method="POST" onsubmit="return confirm('Yakin ingin meyudahi sesi ini?')">
                                 @csrf
