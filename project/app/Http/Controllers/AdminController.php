@@ -42,7 +42,7 @@ class AdminController extends Controller
                 'harga' => $request->harga,
             ]);
 
-        return redirect()->route('admin.editDatabase')->with('success', 'Data berhasil diperbarui.');
+        return redirect()->route('admin.editDatabase', ['id' => $request->id_instruktur])->with('success', 'Data berhasil diperbarui.');
     }
 
     public function addDatabase()
