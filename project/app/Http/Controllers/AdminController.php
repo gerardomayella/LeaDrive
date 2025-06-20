@@ -90,9 +90,9 @@ class AdminController extends Controller
         return view('admin.jadwal-kursus', compact('jadwals'));
     }
 
-    public function deleteJadwal($id)
+    public function deleteJadwal($id_jadwal)
     {
-        DB::table('Jadwal')->where('id', $id)->delete();
+        DB::table('Jadwal')->where('id_jadwal', $id_jadwal)->delete(); // Gunakan id_jadwal sebagai kolom
         return redirect()->route('admin.jadwalKursus')->with('success', 'Sesi berhasil diselesaikan.');
     }
 }
