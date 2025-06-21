@@ -23,7 +23,7 @@ class PemesananController extends Controller
             'gerardo' => 'Manual',
             'ditus' => 'Matic',
             'samuel' => 'Manual',
-            default => Mobil::whereRaw('LOWER(nama) = ?', [strtolower($name)])->value('transmisi') ?? 'Unknown',
+            default => Mobil::whereRaw('LOWER(transmisi) = ?', [strtolower($name)])->value('transmisi') ?? 'Unknown',
         };
 
         // Fetch user_id from the authenticated user
